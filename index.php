@@ -1,7 +1,7 @@
 <?php
 /**
  * ═══════════════════════════════════════════════════════════════
- *  URL TRACKER & REDIRECTOR — woobsing.com/count/index.php
+ *  URL TRACKER & REDIRECTOR — woobsing.com/tracker/index.php
  *  Registra el click en Firestore (+ backup local) y redirige a ?url=
  * ═══════════════════════════════════════════════════════════════
  */
@@ -239,7 +239,7 @@ $jsApiKey    = json_encode(FIREBASE_API_KEY);
   function runGA4(browserData) {
     if (typeof gtag !== 'function') { goNow(); return; }
     var cleanPageUrl = window.location.origin + window.location.pathname.replace(/index\.php$/, '') + HASH;
-    gtag('config', GA4_ID, { page_location: cleanPageUrl, page_title: 'count/' + HASH, send_page_view: true });
+    gtag('config', GA4_ID, { page_location: cleanPageUrl, page_title: 'tracker/' + HASH, send_page_view: true });
     gtag('event', 'url_click', {
       dest_domain: DOMAIN, url_hash: HASH, ref: REF, campaign: REF,
       device_type: browserData ? browserData.deviceType : '',

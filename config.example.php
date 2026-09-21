@@ -13,7 +13,9 @@ define('FIREBASE_DB',         'tracker-shortener-db');
 define('GA4_ID', 'G-M13W1XT5E9');
 
 // ── Tracker público (index.php) ──────────────────────────────────
-define('TRACKER_BASE', 'https://woobsing.com/count/');
+// Se despliega en una carpeta separada de /count/ (que sigue funcionando con el
+// sistema anterior) para no interrumpirlo mientras migras.
+define('TRACKER_BASE', 'https://woobsing.com/tracker/');
 
 // Dominios permitidos para redirigir (?url=). Deja el array vacío para
 // permitir cualquier dominio (comportamiento original). Se recomienda

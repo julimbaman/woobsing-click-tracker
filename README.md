@@ -1,8 +1,13 @@
 # Woobsing Click Tracker — CRUD + Estadísticas
 
-Reescritura del sistema de links trackeados de WhatsApp (`woobsing.com/count/`) del
-Dr. Andrés Vallejo Balen. Mantiene el mismo hosting PHP y la misma base de datos
-Firestore (`tracker-shortener-db`) del proyecto original, pero reorganizado en:
+Reescritura del sistema de links trackeados de WhatsApp (originalmente en
+`woobsing.com/count/`) del Dr. Andrés Vallejo Balen. Mantiene el mismo hosting PHP y
+la misma base de datos Firestore (`tracker-shortener-db`) del proyecto original, pero
+reorganizado en:
+
+> **Se despliega en `woobsing.com/tracker/`, no en `/count/`.** Así el sistema viejo
+> sigue funcionando sin interrupciones mientras migras; cuando confirmes que todo
+> funciona bien en `/tracker/`, decides si reemplazas `/count/` o dejas ambos.
 
 - **Tracker público** (`index.php`) — igual que antes: recibe `?url=...&ref=...`,
   registra el click en Firestore y redirige.
@@ -90,11 +95,16 @@ Edita `config.php` y completa:
 
 `config.php` está en `.gitignore` — nunca se sube al repositorio.
 
-### 2. Subir al hosting
+### 2. Subir al hosting — en una carpeta nueva, sin tocar /count/
 
-Sube todo el contenido de `woobsing-click-tracker/` (incluyendo `config.php` ya completado)
-al directorio `count/` de tu hosting (`woobsing.com/count/`), reemplazando los
-archivos antiguos (`index.php`, `stats.php`, `generator.html`, `test_firebase.php`).
+Sube todo el contenido de `woobsing-click-tracker/` (incluyendo `config.php` ya
+completado) a una carpeta **nueva** en tu hosting, por ejemplo `tracker/`, de modo
+que quede en `woobsing.com/tracker/`. **No la subas dentro de `count/`** — esa carpeta
+sigue corriendo el sistema viejo (`index.php`, `stats.php`, `generator.html`,
+`test_firebase.php`) y no debe tocarse hasta que decidas migrar.
+
+En cPanel/Plesk normalmente es: `public_html/tracker/` (junto a la carpeta `count/`
+que ya existe, no adentro de ella).
 
 Verifica que el hosting soporte `.htaccess` (Apache con `AllowOverride` habilitado,
 como suele venir por defecto en cPanel) para que `config.php` y `clicks.log` queden
@@ -102,7 +112,7 @@ bloqueados a acceso directo.
 
 ### 3. Entrar al panel
 
-Ve a `https://woobsing.com/count/admin/` (te redirige a `login.php`) e ingresa con el
+Ve a `https://woobsing.com/tracker/admin/` (te redirige a `login.php`) e ingresa con el
 usuario/password que definiste. Desde ahí:
 
 - **Stats** — el dashboard de siempre (clicks por día, dispositivo, geo, etc).

@@ -1,6 +1,6 @@
 // ═══════════════════════════════════════════════════════════════════
 //  Dr. Andrés Vallejo Balen · Generador de Links WhatsApp + Tracker
-//  woobsing.com/count/  ·  ahora conectado al panel CRUD (api/contacts.php)
+//  woobsing.com/tracker/  ·  ahora conectado al panel CRUD (api/contacts.php)
 //
 //  Cada fila de la hoja crea/actualiza un contacto real en el panel de
 //  administración (Firestore) en vez de solo escribir una fórmula en la
@@ -8,7 +8,7 @@
 //  no necesita reimplementar MD5 ni la lógica del mensaje.
 // ═══════════════════════════════════════════════════════════════════
 
-var API_BASE    = 'https://woobsing.com/count/api/contacts.php'; // ajusta si cambia el dominio/ruta
+var API_BASE    = 'https://woobsing.com/tracker/api/contacts.php'; // ajusta si cambia el dominio/ruta
 var API_KEY     = 'PON_AQUI_LA_MISMA_API_KEY_QUE_PUSISTE_EN_config.php';
 var TRACKER_REF = 'vallejo_sheets'; // etiqueta que aparece en el dashboard
 
@@ -107,7 +107,7 @@ function generarLinksWhatsApp() {
 
   var msg = '✅ Links generados/actualizados: ' + totalLinks;
   if (errores > 0) msg += '\n⚠ Errores: ' + errores + ' (revisa la columna Link en esas filas)';
-  msg += '\n\n📊 Panel de administración:\nhttps://woobsing.com/count/admin/contacts.php';
+  msg += '\n\n📊 Panel de administración:\nhttps://woobsing.com/tracker/admin/contacts.php';
   SpreadsheetApp.getUi().alert(msg);
 }
 
